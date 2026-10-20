@@ -15,8 +15,8 @@
         "vocab_size": 98,
         "type_token_ratio": 0.2663,
         "languages_detected": {
-          "en": 40,
-          "no": 2
+          "en": 39,
+          "no": 3
         }
       },
       "charts": [

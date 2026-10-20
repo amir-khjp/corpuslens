@@ -6,7 +6,7 @@ around a small, uniform plugin interface so it's easy to extend.
 ## Setup
 
 ```bash
-git clone https://github.com/yourusername/corpuslens.git
+git clone https://github.com/amir-khjp/corpuslens.git
 cd corpuslens
 pip install -e ".[dev]"
 pytest -q
