@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CorpusLens Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #0f1117; --panel: #171a23; --border: #2a2e3a; --text: #e7e9ee;
+    --muted: #9aa0ad; --accent: #6ea8fe; --warn: #f5a623; --good: #4ade80;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f7f8fa; --panel: #ffffff; --border: #e3e5ea; --text: #1c1f27; --muted: #5b6270; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px; max-width: 1100px; margin-inline: auto;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .stat .value { font-size: 1.4rem; font-weight: 600; }
+  .stat .label { color: var(--muted); font-size: 0.8rem; }
+  section { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  section h2 { margin-top: 0; font-size: 1.1rem; }
+  .warn { background: rgba(245, 166, 35, 0.12); border: 1px solid var(--warn); border-radius: 8px; padding: 8px 12px; margin: 6px 0; font-size: 0.9rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  canvas { max-height: 280px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--border); font-size: 0.75rem; color: var(--muted); }
+</style>
+</head>
+<body>
+  <h1>CorpusLens Report</h1>
+  <div class="subtitle">
+    43 rows &middot; text column: <span class="badge">text</span>
+    &middot; label column: <span class="badge">category</span>
+  </div>
+
+  
+  <section>
+    <h2>Basic Stats</h2>
+
+    
+    <div class="warn">&#9888; 1 row(s) have empty text in 'text'.</div>
+    
+
+    <div class="grid">
+      
+        
+        <div class="stat">
+          <div class="value">43</div>
+          <div class="label">n rows</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">1</div>
+          <div class="label">n empty</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">58.2</div>
+          <div class="label">mean chars</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">58.0</div>
+          <div class="label">median chars</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">8.6</div>
+          <div class="label">mean words</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">98</div>
+          <div class="label">vocab size</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">0.2663</div>
+          <div class="label">type token ratio</div>
+        </div>
+        
+      
+        
+      
+    </div>
+
+    
+    <canvas id="chart-basic_stats-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-basic_stats-1"), {
+        type: "line",
+        data: {
+          labels: ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10"],
+          datasets: [{
+            label: "Document length (words)",
+            data: [1, 0, 0, 0, 0, 0, 0, 3, 9, 30],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "Document length (words)" } } }
+      });
+    </script>
+    
+
+    
+  </section>
+  
+  <section>
+    <h2>Duplicates</h2>
+
+    
+    <div class="warn">&#9888; 28 exact duplicate row(s) found (65.1% of the dataset).</div>
+    
+
+    <div class="grid">
+      
+        
+        <div class="stat">
+          <div class="value">28</div>
+          <div class="label">exact duplicates</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">0.6512</div>
+          <div class="label">exact duplicate ratio</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">28</div>
+          <div class="label">near duplicate pairs</div>
+        </div>
+        
+      
+    </div>
+
+    
+    <canvas id="chart-duplicates-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-duplicates-1"), {
+        type: "bar",
+        data: {
+          labels: ["Unique", "Exact duplicates", "Near duplicates"],
+          datasets: [{
+            label: "Duplicate breakdown",
+            data: [-13, 28, 28],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "Duplicate breakdown" } } }
+      });
+    </script>
+    
+
+    
+    <table>
+      <thead><tr><th>row_a</th><th>row_b</th><th>similarity</th></tr></thead>
+      <tbody>
+        
+        <tr><td>0</td><td>2</td><td>1.0</td></tr>
+        
+        <tr><td>0</td><td>15</td><td>1.0</td></tr>
+        
+        <tr><td>0</td><td>40</td><td>1.0</td></tr>
+        
+        <tr><td>1</td><td>12</td><td>1.0</td></tr>
+        
+        <tr><td>1</td><td>25</td><td>1.0</td></tr>
+        
+        <tr><td>3</td><td>11</td><td>1.0</td></tr>
+        
+        <tr><td>3</td><td>31</td><td>1.0</td></tr>
+        
+        <tr><td>3</td><td>37</td><td>1.0</td></tr>
+        
+        <tr><td>4</td><td>8</td><td>1.0</td></tr>
+        
+        <tr><td>4</td><td>27</td><td>1.0</td></tr>
+        
+        <tr><td>4</td><td>29</td><td>1.0</td></tr>
+        
+        <tr><td>5</td><td>14</td><td>1.0</td></tr>
+        
+        <tr><td>5</td><td>23</td><td>1.0</td></tr>
+        
+        <tr><td>5</td><td>30</td><td>1.0</td></tr>
+        
+        <tr><td>5</td><td>41</td><td>1.0</td></tr>
+        
+        <tr><td>6</td><td>9</td><td>1.0</td></tr>
+        
+        <tr><td>6</td><td>20</td><td>1.0</td></tr>
+        
+        <tr><td>6</td><td>34</td><td>1.0</td></tr>
+        
+        <tr><td>7</td><td>36</td><td>1.0</td></tr>
+        
+        <tr><td>10</td><td>17</td><td>1.0</td></tr>
+        
+        <tr><td>10</td><td>38</td><td>1.0</td></tr>
+        
+        <tr><td>13</td><td>19</td><td>1.0</td></tr>
+        
+        <tr><td>13</td><td>33</td><td>1.0</td></tr>
+        
+        <tr><td>16</td><td>28</td><td>1.0</td></tr>
+        
+        <tr><td>18</td><td>24</td><td>1.0</td></tr>
+        
+        <tr><td>18</td><td>26</td><td>1.0</td></tr>
+        
+        <tr><td>22</td><td>35</td><td>1.0</td></tr>
+        
+        <tr><td>22</td><td>39</td><td>1.0</td></tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+  
+  <section>
+    <h2>Pii</h2>
+
+    
+    <div class="warn">&#9888; 3 row(s) (7.0%) contain patterns that look like PII. Review before sharing this dataset.</div>
+    
+
+    <div class="grid">
+      
+        
+        <div class="stat">
+          <div class="value">3</div>
+          <div class="label">rows with pii</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">0.0698</div>
+          <div class="label">pii row ratio</div>
+        </div>
+        
+      
+        
+      
+    </div>
+
+    
+    <canvas id="chart-pii-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-pii-1"), {
+        type: "bar",
+        data: {
+          labels: ["email", "phone", "ssn", "credit_card", "ip_address"],
+          datasets: [{
+            label: "PII matches by type",
+            data: [3, 0, 0, 0, 0],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "PII matches by type" } } }
+      });
+    </script>
+    
+
+    
+  </section>
+  
+  <section>
+    <h2>Keywords</h2>
+
+    
+
+    <div class="grid">
+      
+        
+      
+    </div>
+
+    
+    <canvas id="chart-keywords-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-keywords-1"), {
+        type: "bar",
+        data: {
+          labels: ["support", "new", "hours", "skies", "architecture", "backend", "backend new", "engineers", "engineers migrated", "microservices"],
+          datasets: [{
+            label: "Top keywords (TF-IDF)",
+            data: [1.9, 1.8, 1.79, 1.61, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "Top keywords (TF-IDF)" } } }
+      });
+    </script>
+    
+
+    
+    <table>
+      <thead><tr><th>term</th><th>score</th></tr></thead>
+      <tbody>
+        
+        <tr><td>support</td><td>1.9</td></tr>
+        
+        <tr><td>new</td><td>1.795</td></tr>
+        
+        <tr><td>hours</td><td>1.79</td></tr>
+        
+        <tr><td>skies</td><td>1.612</td></tr>
+        
+        <tr><td>architecture</td><td>1.52</td></tr>
+        
+        <tr><td>backend</td><td>1.52</td></tr>
+        
+        <tr><td>backend new</td><td>1.52</td></tr>
+        
+        <tr><td>engineers</td><td>1.52</td></tr>
+        
+        <tr><td>engineers migrated</td><td>1.52</td></tr>
+        
+        <tr><td>microservices</td><td>1.52</td></tr>
+        
+        <tr><td>microservices architecture</td><td>1.52</td></tr>
+        
+        <tr><td>migrated</td><td>1.52</td></tr>
+        
+        <tr><td>migrated backend</td><td>1.52</td></tr>
+        
+        <tr><td>new microservices</td><td>1.52</td></tr>
+        
+        <tr><td>advised</td><td>1.333</td></tr>
+        
+        <tr><td>advised prepare</td><td>1.333</td></tr>
+        
+        <tr><td>prepare</td><td>1.333</td></tr>
+        
+        <tr><td>prepare tropical</td><td>1.333</td></tr>
+        
+        <tr><td>residents</td><td>1.333</td></tr>
+        
+        <tr><td>residents advised</td><td>1.333</td></tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+  
+  <section>
+    <h2>Clustering</h2>
+
+    
+
+    <div class="grid">
+      
+        
+        <div class="stat">
+          <div class="value">2</div>
+          <div class="label">n clusters</div>
+        </div>
+        
+      
+        
+      
+    </div>
+
+    
+    <canvas id="chart-clustering-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-clustering-1"), {
+        type: "pie",
+        data: {
+          labels: ["hours / skies / support", "new / backend / microservices"],
+          datasets: [{
+            label: "Cluster sizes",
+            data: [35, 7],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "Cluster sizes" } } }
+      });
+    </script>
+    
+
+    
+    <table>
+      <thead><tr><th>cluster_id</th><th>label</th><th>size</th><th>top_terms</th><th>samples</th></tr></thead>
+      <tbody>
+        
+        <tr><td>1</td><td>hours / skies / support</td><td>35</td><td>['hours', 'skies', 'support', 'storm', 'prepare', 'residents', 'tropical', 'advised']</td><td>['Customers reported slow response times during peak hours.', 'Stock prices rallied after the earnings call beat expectations.', 'Customers reported slow response times during peak hours.']</td></tr>
+        
+        <tr><td>0</td><td>new / backend / microservices</td><td>7</td><td>['new', 'backend', 'microservices', 'engineers', 'architecture', 'migrated', 'streaming', 'responses']</td><td>['Engineers migrated the backend to a new microservices architecture.', 'The new API release adds support for streaming responses.', 'Engineers migrated the backend to a new microservices architecture.']</td></tr>
+        
+      </tbody>
+    </table>
+    
+  </section>
+  
+  <section>
+    <h2>Label Balance</h2>
+
+    
+    <div class="warn">&#9888; Class imbalance ratio is 14.0:1 — the majority class dominates 43 rows.</div>
+    
+
+    <div class="grid">
+      
+        
+        <div class="stat">
+          <div class="value">True</div>
+          <div class="label">enabled</div>
+        </div>
+        
+      
+        
+        <div class="stat">
+          <div class="value">5</div>
+          <div class="label">n classes</div>
+        </div>
+        
+      
+        
+      
+        
+        <div class="stat">
+          <div class="value">14.0</div>
+          <div class="label">imbalance ratio</div>
+        </div>
+        
+      
+    </div>
+
+    
+    <canvas id="chart-label_balance-1"></canvas>
+    <script>
+      new Chart(document.getElementById("chart-label_balance-1"), {
+        type: "bar",
+        data: {
+          labels: ["tech", "support", "weather", "finance", "misc"],
+          datasets: [{
+            label: "Class distribution (category)",
+            data: [14, 10, 10, 8, 1],
+            backgroundColor: ["#6ea8fe","#4ade80","#f5a623","#f87171","#c084fc","#22d3ee","#fbbf24","#a3e635"],
+            borderColor: "#6ea8fe",
+            borderWidth: 1,
+          }]
+        },
+        options: { responsive: true, plugins: { title: { display: true, text: "Class distribution (category)" } } }
+      });
+    </script>
+    
+
+    
+  </section>
+  
+
+  <div class="subtitle">Generated by <a href="https://github.com/yourusername/corpuslens" style="color: var(--accent);">CorpusLens</a></div>
+</body>
+</html>

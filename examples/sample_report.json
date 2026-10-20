@@ -1,0 +1,609 @@
+{
+  "title": "CorpusLens Report",
+  "n_rows": 43,
+  "text_col": "text",
+  "label_col": "category",
+  "analyzers": [
+    {
+      "name": "basic_stats",
+      "summary": {
+        "n_rows": 43,
+        "n_empty": 1,
+        "mean_chars": 58.2,
+        "median_chars": 58.0,
+        "mean_words": 8.6,
+        "vocab_size": 98,
+        "type_token_ratio": 0.2663,
+        "languages_detected": {
+          "en": 40,
+          "no": 2
+        }
+      },
+      "charts": [
+        {
+          "title": "Document length (words)",
+          "kind": "histogram",
+          "labels": [
+            "0-1",
+            "1-2",
+            "2-3",
+            "3-4",
+            "4-5",
+            "5-6",
+            "6-7",
+            "7-8",
+            "8-9",
+            "9-10"
+          ],
+          "values": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            9,
+            30
+          ]
+        }
+      ],
+      "table": null,
+      "warnings": [
+        "1 row(s) have empty text in 'text'."
+      ]
+    },
+    {
+      "name": "duplicates",
+      "summary": {
+        "exact_duplicates": 28,
+        "exact_duplicate_ratio": 0.6512,
+        "near_duplicate_pairs": 28
+      },
+      "charts": [
+        {
+          "title": "Duplicate breakdown",
+          "kind": "bar",
+          "labels": [
+            "Unique",
+            "Exact duplicates",
+            "Near duplicates"
+          ],
+          "values": [
+            -13,
+            28,
+            28
+          ]
+        }
+      ],
+      "table": [
+        {
+          "row_a": 0,
+          "row_b": 2,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 0,
+          "row_b": 15,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 0,
+          "row_b": 40,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 1,
+          "row_b": 12,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 1,
+          "row_b": 25,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 3,
+          "row_b": 11,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 3,
+          "row_b": 31,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 3,
+          "row_b": 37,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 4,
+          "row_b": 8,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 4,
+          "row_b": 27,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 4,
+          "row_b": 29,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 5,
+          "row_b": 14,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 5,
+          "row_b": 23,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 5,
+          "row_b": 30,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 5,
+          "row_b": 41,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 6,
+          "row_b": 9,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 6,
+          "row_b": 20,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 6,
+          "row_b": 34,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 7,
+          "row_b": 36,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 10,
+          "row_b": 17,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 10,
+          "row_b": 38,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 13,
+          "row_b": 19,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 13,
+          "row_b": 33,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 16,
+          "row_b": 28,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 18,
+          "row_b": 24,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 18,
+          "row_b": 26,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 22,
+          "row_b": 35,
+          "similarity": 1.0
+        },
+        {
+          "row_a": 22,
+          "row_b": 39,
+          "similarity": 1.0
+        }
+      ],
+      "warnings": [
+        "28 exact duplicate row(s) found (65.1% of the dataset)."
+      ]
+    },
+    {
+      "name": "pii",
+      "summary": {
+        "rows_with_pii": 3,
+        "pii_row_ratio": 0.0698,
+        "matches_by_type": {
+          "email": 3,
+          "phone": 0,
+          "ssn": 0,
+          "credit_card": 0,
+          "ip_address": 0
+        }
+      },
+      "charts": [
+        {
+          "title": "PII matches by type",
+          "kind": "bar",
+          "labels": [
+            "email",
+            "phone",
+            "ssn",
+            "credit_card",
+            "ip_address"
+          ],
+          "values": [
+            3,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "table": null,
+      "warnings": [
+        "3 row(s) (7.0%) contain patterns that look like PII. Review before sharing this dataset."
+      ]
+    },
+    {
+      "name": "keywords",
+      "summary": {
+        "top_keywords": [
+          {
+            "term": "support",
+            "score": 1.9
+          },
+          {
+            "term": "new",
+            "score": 1.795
+          },
+          {
+            "term": "hours",
+            "score": 1.79
+          },
+          {
+            "term": "skies",
+            "score": 1.612
+          },
+          {
+            "term": "architecture",
+            "score": 1.52
+          },
+          {
+            "term": "backend",
+            "score": 1.52
+          },
+          {
+            "term": "backend new",
+            "score": 1.52
+          },
+          {
+            "term": "engineers",
+            "score": 1.52
+          },
+          {
+            "term": "engineers migrated",
+            "score": 1.52
+          },
+          {
+            "term": "microservices",
+            "score": 1.52
+          },
+          {
+            "term": "microservices architecture",
+            "score": 1.52
+          },
+          {
+            "term": "migrated",
+            "score": 1.52
+          },
+          {
+            "term": "migrated backend",
+            "score": 1.52
+          },
+          {
+            "term": "new microservices",
+            "score": 1.52
+          },
+          {
+            "term": "advised",
+            "score": 1.333
+          },
+          {
+            "term": "advised prepare",
+            "score": 1.333
+          },
+          {
+            "term": "prepare",
+            "score": 1.333
+          },
+          {
+            "term": "prepare tropical",
+            "score": 1.333
+          },
+          {
+            "term": "residents",
+            "score": 1.333
+          },
+          {
+            "term": "residents advised",
+            "score": 1.333
+          }
+        ]
+      },
+      "charts": [
+        {
+          "title": "Top keywords (TF-IDF)",
+          "kind": "bar",
+          "labels": [
+            "support",
+            "new",
+            "hours",
+            "skies",
+            "architecture",
+            "backend",
+            "backend new",
+            "engineers",
+            "engineers migrated",
+            "microservices"
+          ],
+          "values": [
+            1.9,
+            1.8,
+            1.79,
+            1.61,
+            1.52,
+            1.52,
+            1.52,
+            1.52,
+            1.52,
+            1.52
+          ]
+        }
+      ],
+      "table": [
+        {
+          "term": "support",
+          "score": 1.9
+        },
+        {
+          "term": "new",
+          "score": 1.795
+        },
+        {
+          "term": "hours",
+          "score": 1.79
+        },
+        {
+          "term": "skies",
+          "score": 1.612
+        },
+        {
+          "term": "architecture",
+          "score": 1.52
+        },
+        {
+          "term": "backend",
+          "score": 1.52
+        },
+        {
+          "term": "backend new",
+          "score": 1.52
+        },
+        {
+          "term": "engineers",
+          "score": 1.52
+        },
+        {
+          "term": "engineers migrated",
+          "score": 1.52
+        },
+        {
+          "term": "microservices",
+          "score": 1.52
+        },
+        {
+          "term": "microservices architecture",
+          "score": 1.52
+        },
+        {
+          "term": "migrated",
+          "score": 1.52
+        },
+        {
+          "term": "migrated backend",
+          "score": 1.52
+        },
+        {
+          "term": "new microservices",
+          "score": 1.52
+        },
+        {
+          "term": "advised",
+          "score": 1.333
+        },
+        {
+          "term": "advised prepare",
+          "score": 1.333
+        },
+        {
+          "term": "prepare",
+          "score": 1.333
+        },
+        {
+          "term": "prepare tropical",
+          "score": 1.333
+        },
+        {
+          "term": "residents",
+          "score": 1.333
+        },
+        {
+          "term": "residents advised",
+          "score": 1.333
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "name": "clustering",
+      "summary": {
+        "n_clusters": 2,
+        "clusters": [
+          {
+            "cluster_id": 1,
+            "label": "hours / skies / support",
+            "size": 35,
+            "top_terms": [
+              "hours",
+              "skies",
+              "support",
+              "storm",
+              "prepare",
+              "residents",
+              "tropical",
+              "advised"
+            ],
+            "samples": [
+              "Customers reported slow response times during peak hours.",
+              "Stock prices rallied after the earnings call beat expectations.",
+              "Customers reported slow response times during peak hours."
+            ]
+          },
+          {
+            "cluster_id": 0,
+            "label": "new / backend / microservices",
+            "size": 7,
+            "top_terms": [
+              "new",
+              "backend",
+              "microservices",
+              "engineers",
+              "architecture",
+              "migrated",
+              "streaming",
+              "responses"
+            ],
+            "samples": [
+              "Engineers migrated the backend to a new microservices architecture.",
+              "The new API release adds support for streaming responses.",
+              "Engineers migrated the backend to a new microservices architecture."
+            ]
+          }
+        ]
+      },
+      "charts": [
+        {
+          "title": "Cluster sizes",
+          "kind": "pie",
+          "labels": [
+            "hours / skies / support",
+            "new / backend / microservices"
+          ],
+          "values": [
+            35,
+            7
+          ]
+        }
+      ],
+      "table": [
+        {
+          "cluster_id": 1,
+          "label": "hours / skies / support",
+          "size": 35,
+          "top_terms": [
+            "hours",
+            "skies",
+            "support",
+            "storm",
+            "prepare",
+            "residents",
+            "tropical",
+            "advised"
+          ],
+          "samples": [
+            "Customers reported slow response times during peak hours.",
+            "Stock prices rallied after the earnings call beat expectations.",
+            "Customers reported slow response times during peak hours."
+          ]
+        },
+        {
+          "cluster_id": 0,
+          "label": "new / backend / microservices",
+          "size": 7,
+          "top_terms": [
+            "new",
+            "backend",
+            "microservices",
+            "engineers",
+            "architecture",
+            "migrated",
+            "streaming",
+            "responses"
+          ],
+          "samples": [
+            "Engineers migrated the backend to a new microservices architecture.",
+            "The new API release adds support for streaming responses.",
+            "Engineers migrated the backend to a new microservices architecture."
+          ]
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "name": "label_balance",
+      "summary": {
+        "enabled": true,
+        "n_classes": 5,
+        "class_counts": {
+          "tech": 14,
+          "support": 10,
+          "weather": 10,
+          "finance": 8,
+          "misc": 1
+        },
+        "imbalance_ratio": 14.0
+      },
+      "charts": [
+        {
+          "title": "Class distribution (category)",
+          "kind": "bar",
+          "labels": [
+            "tech",
+            "support",
+            "weather",
+            "finance",
+            "misc"
+          ],
+          "values": [
+            14,
+            10,
+            10,
+            8,
+            1
+          ]
+        }
+      ],
+      "table": null,
+      "warnings": [
+        "Class imbalance ratio is 14.0:1 \u2014 the majority class dominates 43 rows."
+      ]
+    }
+  ]
+}
