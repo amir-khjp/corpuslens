@@ -12,6 +12,8 @@ pip install corpuslens
 corpuslens report reviews.csv --text-col text --label-col category
 ```
 
+![CorpusLens report screenshot](examples/corpuslens_screenshot.png)
+
 Opens `corpuslens_report.html` with:
 
 - **Length & language stats** — word/char distributions, vocabulary diversity, language mix

@@ -40,7 +40,13 @@ class DuplicateAnalyzer(Analyzer):
                 seen = set()
                 for i in range(len(idx)):
                     for j in range(i + 1, len(idx)):
-                        if sims[i, j] >= NEAR_DUP_THRESHOLD and idx[i] not in seen and idx[j] not in seen:
+                        is_exact = non_empty.iloc[i] == non_empty.iloc[j]
+                        if (
+                            not is_exact
+                            and sims[i, j] >= NEAR_DUP_THRESHOLD
+                            and idx[i] not in seen
+                            and idx[j] not in seen
+                        ):
                             near_dup_pairs.append(
                                 {
                                     "row_a": idx[i],
@@ -65,7 +71,7 @@ class DuplicateAnalyzer(Analyzer):
             title="Duplicate breakdown",
             kind="bar",
             labels=["Unique", "Exact duplicates", "Near duplicates"],
-            values=[n - exact_dup_count - len(near_dup_pairs), exact_dup_count, len(near_dup_pairs)],
+            values=[max(0, n - exact_dup_count - len(near_dup_pairs)), exact_dup_count, len(near_dup_pairs)],
         )
 
         if exact_dup_count:
